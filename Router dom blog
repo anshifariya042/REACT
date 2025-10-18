@@ -1,0 +1,107 @@
+//App.jsx
+
+import React from "react";
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Register from './Register';
+import Login from './Login';
+import Home from './Home';
+function App(){
+
+
+return(
+    <BrowserRouter>
+    <Routes>
+      <Route path="/"element={<Register/>}/>
+       <Route path="/login"element={<Login/>}/>
+        <Route path="/home"element={<Home/>}/>
+    </Routes>
+    </BrowserRouter>
+);
+
+};
+export default App;
+
+//Register.jsx
+
+import React from 'react'
+import {useNagivate} from 'react-router-dom'
+
+
+function Register() {
+    const navigate=useNagivate();
+    const handleRegister=(e)=>{
+         e.preventDefault();
+         navigate("./login")
+    }
+  return (
+    <div>
+         <form onSubmit={handleRegister}>
+        <input
+       
+        type='text'
+        placeholder='username'
+        
+        />
+        <br/>
+        <input
+        type='password'
+        placeholder='password'
+        />
+        <br/>
+        <button type='submit'>Submit</button>
+        </form>
+      
+    </div>
+  )
+}
+
+export default Register;
+
+//Login.jsx
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
+function Login() {
+    const navigate=useNavigate();
+    const handleLogin=(e)=>{
+        e.preventDefault();
+        navigate('./home')
+    }
+
+  return (
+    <div>
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+        <input
+        type='text'
+        placeholder='username'
+        />
+        <br/>
+        <input
+        type='password'
+        placeholder='password'
+        />
+        <br/>
+        <button type='submit'>Login</button>
+
+      </form>
+    </div>
+  )
+}
+
+export default Login;
+
+//Home.jsx
+
+import React from 'react'
+
+function Home() {
+  return (
+    <div>
+      <h1>Welcome to the home page</h1>
+    </div>
+  )
+}
+
+export default Home
+
